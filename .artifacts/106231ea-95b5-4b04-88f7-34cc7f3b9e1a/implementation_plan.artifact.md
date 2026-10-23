@@ -1,32 +1,36 @@
-# Implement MainActivity and Jetpack Compose Entry Point
+# Jetpack Compose Phases — Practice Class Implementation Plan
 
-Add a `MainActivity.kt` file with a Jetpack Compose UI, enable Compose in `build.gradle.kts`, add cached Compose dependencies (`activity-compose`, `compose.ui`, `compose.material3`), and update `AndroidManifest.xml` to launch `MainActivity`.
+Complete solutions and hands-on implementations for all 14 questions on Jetpack Compose Phases (Composition, Layout, and Drawing).
 
 ## User Review Required
 
-> [!IMPORTANT]
-> This plan configures Jetpack Compose (`compileSdk 36`, Compose UI `1.10.4`, Activity Compose `1.13.0`) and creates `MainActivity.kt`.
+> [!NOTE]
+> This plan covers all theoretical answers (Questions 1–3, 8, 12) and hands-on Jetpack Compose practice components (Questions 4–14) structured for package `uz.ttpu.framephases`.
 
-## Proposed Changes
+## Proposed Changes & Content
 
-### Configuration and Dependencies
+### Part 1 & Other: Theoretical Questions (1, 2, 3, 8, 12)
+- **Question 1**: Three phases of a frame, step details, `LazyColumn` exception, and skipping mechanism.
+- **Question 2**: Layout algorithm tree walk, node visit counts, traversal time impact, and phase tree generation.
+- **Question 3**: State reads via `.value` vs delegates, offset lambda phase timing, and restart scopes.
+- **Question 8**: State read phases and affected lifecycle phases for options (a)–(f).
+- **Question 12**: Two-frame layout loops, `toDp()` warning signs, and broken phase principles.
 
-#### [MODIFY] [libs.versions.toml](file:///C:/Users/Lab/AndroidStudioProjects/ComposeArchLab/gradle/libs.versions.toml)
-- Add Compose version (`compose = "1.10.4"`, `activityCompose = "1.13.0"`) and libraries (`androidx-activity-compose`, `androidx-compose-ui`, `androidx-compose-material3`).
-
-#### [MODIFY] [build.gradle.kts](file:///C:/Users/Lab/AndroidStudioProjects/ComposeArchLab/app/build.gradle.kts)
-- Enable `buildFeatures { compose = true }`.
-- Add Compose dependencies.
-
-### Application Entry Point
-
-#### [MODIFY] [AndroidManifest.xml](file:///C:/Users/Lab/AndroidStudioProjects/ComposeArchLab/app/src/main/AndroidManifest.xml)
-- Register `MainActivity` with a MAIN action and LAUNCHER category.
-
-#### [NEW] [MainActivity.kt](file:///C:/Users/Lab/AndroidStudioProjects/ComposeArchLab/app/src/main/java/uz/ttpu/composearchlab/MainActivity.kt)
-- Create `MainActivity` extending `ComponentActivity` hosting a simple Jetpack Compose screen.
+### Part 2, 3, & 4: Hands-On Components (Questions 4–14)
+All hands-on demo files implemented in `uz.ttpu.framephases`:
+1. `PhaseLog.kt`: `Modifier.logPhases(name)` helper.
+2. `LectureTree.kt`: Tree structure logging measure, place, draw, and composition.
+3. `PaddingDemo.kt`: Composition-phase state read demonstration.
+4. `OffsetDemo.kt`: Layout-phase state read demonstration with lambda vs eager read.
+5. `ColorDemo.kt`: Drawing-phase state read demonstration.
+6. `ParallaxSlow.kt` & `ParallaxFast.kt`: Parallax scrolling optimization.
+7. `ScrollToTopNaive.kt`: `derivedStateOf` optimization for button visibility.
+8. `Parent.kt`, `Child.kt`, `Sibling.kt`: Restart scope skipping with lambda reads.
+9. `CyclicDemo.kt` & `CyclicFixed.kt`: Cyclic phase dependency and layout primitives.
+10. `StackBelow.kt`: Custom layout implementation (`Layout` API).
 
 ## Verification Plan
 
 ### Automated Tests
-- Run gradle build (`app:assembleDebug`) to verify compilation and resource/dependency resolution.
+- Build project (`app:assembleDebug`) to ensure all components compile cleanly.
+- Verify Logcat output tags (`tag:Phases`, `tag:Parallax`, `tag:Derived`, `tag:Skip`, `tag:Cycle`, `tag:StackBelow`).
