@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "uz.ttpu.composearchlab"
+    namespace = "uz.ttpu.framephases"
     compileSdk {
         version = release(36) {
             minorApiLevel = 1
@@ -12,7 +12,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "uz.ttpu.composearchlab"
+        applicationId = "uz.ttpu.framephases"
         minSdk = 24
         targetSdk = 36
         versionCode = 1
